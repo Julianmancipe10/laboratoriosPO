@@ -1,0 +1,53 @@
+package guia13;
+
+import javax.swing.JOptionPane;
+
+public class Principal {
+
+    Flecha flecha1, flecha2, flecha3;
+
+    public static void main(String[] args) {
+        Principal miPrincipal = new Principal();
+    }
+
+    public Principal() {
+        //Flecha1 longitud por defecto
+        flecha1 = new Flecha();
+        flecha1.construirFlecha();
+        flecha1.imprimirEspacio();
+
+        // Flecha2 longitud definida por el usuario
+        flecha2 = new Flecha();
+        String longitud2Str = JOptionPane.showInputDialog("Ingrese la longitud de la flecha 2:");
+        int longitud2 = Integer.parseInt(longitud2Str);
+        flecha2.setLongitud(longitud2);
+        flecha2.setColor("Rojo");
+        flecha2.construirFlecha();
+        flecha2.imprimirEspacio();
+
+        //Flecha3 longitud y color definidos por el usuario
+        String longitud3Str = JOptionPane.showInputDialog("Ingrese la longitud de la flecha 3:");
+        int longitud3 = Integer.parseInt(longitud3Str);
+        String color3 = JOptionPane.showInputDialog("Ingrese el color de la flecha 3:");
+        flecha3 = new Flecha(longitud3, color3);
+        flecha3.construirFlecha();
+        flecha3.imprimirEspacio();
+        
+    }
+        // Método para mostrar un menú y elegir el color
+        private String elegirColor() {
+            String[] opciones = {"negro", "rojo"};
+            int eleccion = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione el color de la flecha:",
+                "Elección de color",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+            );
+            return opciones[eleccion]; 
+        
+    }
+}
